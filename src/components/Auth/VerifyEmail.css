@@ -1,0 +1,149 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.verify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding-top: 80px; /* Thêm khoảng trống phía trên để tránh bị che bởi Navbar */
+}
+
+.verify-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 650px;
+  height: 730px;
+}
+
+.verify-form h1 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 50px;
+}
+
+.verify-form input {
+  width: 87%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 24px;
+  font-size: 16px;
+}
+
+.verify-form button {
+  width: 50%;
+  margin-left: 170px;
+  padding: 0.75rem;
+  background: #005cb9;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+  height: 50px;
+}
+
+.verify-form button:hover {
+  background: #3c0444;
+}
+
+.verify-form p {
+  margin-top: 1rem;
+  color: #333;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.verify-form a {
+  font-weight: bold;
+  color: #005cb9;
+  text-decoration: none;
+}
+
+.verify-form a:hover {
+  text-decoration: underline;
+}
+
+.btn-signin:hover {
+  background: #ffffff;
+}
+
+img.logo-title {
+  width: 250px;
+}
+
+.verify-container .fill-Information {
+  margin-top: 20px;
+  color: #333;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.verify-container .error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: 20px;
+}
+
+.success-message {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 650px;
+  margin-bottom: 500px;
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-icon img {
+  width: 150px;
+  height: 100px;
+}
+
+.success-message h2 {
+  color: #4caf50;
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+.success-message button {
+  padding: 0.75rem 1.5rem;
+  background: #005cb9;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.success-message button:hover {
+  background: #3c0444;
+}

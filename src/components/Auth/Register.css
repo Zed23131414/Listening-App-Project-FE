@@ -1,0 +1,103 @@
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    padding-top: 80px; /* Thêm khoảng trống phía trên để tránh bị che bởi Navbar */
+  }
+  
+  .register-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 650px;
+    height: 730px;
+  }
+  
+  .register-form h1 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 50px;
+  }
+  
+  .register-form input {
+    width: 87%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 24px;
+    font-size: 16px;
+  }
+  
+  .register-form button {
+    width: 50%;
+    margin-left: 170px;
+    padding: 0.75rem;
+    background: #005cb9;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 30px;
+    height: 50px;
+  }
+  
+  .register-form button:hover {
+    background: #3c0444;
+  }
+  
+  .register-form p {
+    margin-top: 1rem;
+    color: #333;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+  }
+  
+  .register-form a {
+    font-weight: bold;
+    color: #005cb9;
+    text-decoration: none;
+  }
+  
+  .register-form a:hover {
+    text-decoration: underline;
+  }
+  
+  .btn-signin:hover {
+    background: #ffffff;
+  }
+  
+  img.logo-title {
+    width: 250px;
+  }
+  
+  .register-container .fill-Information {
+    margin-top: 20px;
+    color: #333;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .register-container .input-error {
+    border-color: red;
+  }
+  
+  .register-container .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-size: 20px;
+  }
