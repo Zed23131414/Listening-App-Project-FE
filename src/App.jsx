@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-import ForgetPasswordPage from './pages/ForgetPasswordPage';
+import ForgetPasswordPage from './pages/ForgetPassword';
 import VerifyEmailPage from './pages/VertifyEmailPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import Navbar from './components/Navbar';

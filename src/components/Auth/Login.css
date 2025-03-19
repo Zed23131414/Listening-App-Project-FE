@@ -1,0 +1,97 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .login-form input {
+    width: calc(100% - 24px); /* Đảm bảo input luôn vừa với form */
+    padding: 12px;
+    margin: 8px 0; /* Đảm bảo khoảng cách giữa các input đồng đều */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block; /* Tránh lỗi input bị co lại */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+  }
+  
+  .login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150%;
+    max-width: 500px; /* Giới hạn chiều rộng form */
+    text-align: center;
+  }
+  
+  .titleLogin {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .titleLogin h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .logo-title {
+    width: 150px; /* Điều chỉnh kích thước logo */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .fill-Information {
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-error {
+    border: 1px solid red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+  button {
+    width: 80%; /* Giảm kích thước nút */
+    max-width: 200px; /* Giới hạn chiều rộng tối đa */
+    padding: 10px; /* Giảm padding để nút nhỏ hơn */
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Làm nút bo tròn hơn */
+    cursor: pointer;
+    font-size: 16px;
+    margin: 15px auto; /* Căn giữa theo chiều ngang */
+    display: block; /* Đảm bảo nút hiển thị trên một dòng riêng */
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #003d80;
+  }
+  
+  p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  p a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }

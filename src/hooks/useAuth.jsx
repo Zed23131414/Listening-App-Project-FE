@@ -5,10 +5,14 @@ export const useAuth = () => {
     const response = await axios.post('http://localhost:5000/api/auth/register', formData);
     return response.data;
   };
+  const login = async (formData) => {
+    const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+    return response.data;
+  };
 
   const verifyEmail = async (formData) => {
     const response = await axios.post('http://localhost:5000/api/auth/verify-email', formData);
     return response.data;
   };
-  return { register,verifyEmail };
+  return { register,verifyEmail, login };
 };
