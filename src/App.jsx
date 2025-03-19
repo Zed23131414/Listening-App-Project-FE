@@ -1,15 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Lessons from "./pages/Lessons";
-import React from "react";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AdminLogin from './components/Admin/Login.jsx';
+import UserManagement from './components/Admin/UserManagement.jsx';
+import AdminTestManagement from './components/Admin/AdminTestManagement';
+import AdminTestResults from './components/Admin/AdminTestResults';
+import AdminQuestionManagement from './components/Admin/AdminQuestionManagement';
 
-export default function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/lessons" element={<Lessons />} />
-      </Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/usermanagement" element={<UserManagement />} />
+        <Route path="/admin/tests" element={<AdminTestManagement />} />
+        <Route path="/admin/tests/questions" element={<AdminQuestionManagement />} />
+        <Route path="/admin/results" element={<AdminTestResults />} />
+        </Routes>
     </Router>
   );
-}
+};
+
+export default App;

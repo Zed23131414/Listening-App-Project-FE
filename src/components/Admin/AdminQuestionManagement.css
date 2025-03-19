@@ -1,0 +1,161 @@
+.admin-question-management {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+fieldset {
+  border: 2px solid #27905c;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+legend {
+  font-size: 25px;
+  font-weight: bold;
+  color: #27905c;
+}
+
+select, input, button {
+  width: 88%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+
+}
+
+select {
+  background: #fff;
+  width: 90%; 
+  font-size: 20px;
+}
+
+button {
+  background: #27905c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  width: 200px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: #e4b329;
+}
+
+/* Căn chỉnh các input trong Choices */
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  transform: scale(1.5); /* Phóng to 1.5 lần */
+  cursor: pointer;
+}
+
+/* Căn chỉnh văn bản "Correct" với checkbox */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px; /* Tăng cỡ chữ */
+}
+
+.option input[type="text"] {
+  flex: 1;
+}
+.option label {
+  display: flex
+;
+  align-items: center;
+  font-size: 20px;
+}
+
+.option label input[type="checkbox"] {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Table Styling */
+.questions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.questions-table th,
+.questions-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.questions-table th {
+  background-color: #2c7a2c;
+  color: white;
+}
+
+.questions-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.questions-table tr:hover {
+  background-color: #ddd;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actions button {
+  background-color: #2c7a2c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.actions button:hover {
+  background-color: #1f5b1f;
+}
+
+.actions button:active {
+  background-color: #174017;
+}
+
+button.addQuestion {
+  width: 200px;
+  height: 60px;
+  margin: 10px;
+}
+
+button.submitQuestion {
+  width: 250px;
+  height: 60px;
+  margin: 10px;
+}
+td {
+  font-size: 20px;
+}
