@@ -1,0 +1,205 @@
+.entry-test-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.entry-test-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  transition: transform 0.3s ease;
+}
+
+.entry-test-card:hover {
+  transform: translateY(-5px);
+}
+
+.entry-test-header {
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.headphone-icon {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.level-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #ffa500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.entry-test-content {
+  padding: 2rem;
+}
+
+.entry-test-content h1 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.test-description {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.test-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.test-instructions {
+  margin-bottom: 2rem;
+}
+
+.test-instructions h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.test-instructions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.test-instructions li {
+  color: #666;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.test-instructions li::before {
+  content: "•";
+  color: #ffa500;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+.start-test-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #27905c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.start-test-btn:hover {
+  background: #1e724a;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Loading spinner */
+.entry-test-loading {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #27905c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .entry-test-container {
+    padding: 1rem;
+  }
+
+  .entry-test-header {
+    height: 150px;
+    padding: 1.5rem;
+  }
+
+  .headphone-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .entry-test-content {
+    padding: 1.5rem;
+  }
+
+  .entry-test-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .test-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+} 

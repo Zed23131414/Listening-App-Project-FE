@@ -7,7 +7,8 @@ import ForgetPasswordPage from './pages/ForgetPassword';
 import VerifyEmailPage from './pages/VertifyEmailPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import Navbar from './components/Navbar';
-
+import EntryTest from "./pages/EntryTest";
+import Dashboard from './pages/Dashboard';
 const App = () => {
   return (
     <AuthProvider>
@@ -17,8 +18,10 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/entry-test" element={<EntryTest />} />
         </Routes>
       </Router>
     </AuthProvider>

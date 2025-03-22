@@ -1,71 +1,136 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import React from "react";
+import TestCard from "../components/EntryTest/TestCard";
+import QuestionList from "../components/EntryTest/QuestionList";
+import TestHeader from "../components/EntryTest/TestHeader";
+import "./EntryTest.css";
 
-const EntryTest = ({ userId, token }) => {
+const EntryTest = () => {
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [tests, setTests] = useState([]);
+  const [selectedTest, setSelectedTest] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Gọi API lấy danh sách câu hỏi bài test đầu vào
-    axios
-      .get("http://localhost:5000/api/test/entry-test", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        setQuestions(res.data.questions);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, [token]);
+    if (!user) {
+      navigate("/login");
+      return;
+    }
 
-  const handleAnswerChange = (questionId, answer) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: answer }));
+    fetchTests();
+  }, [user, navigate]);
+
+  const fetchTests = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/tests/category?category=entry-test");
+      console.log("📥 Test data:", response.data);
+      setTests(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("❌ Lỗi khi lấy danh sách bài test:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleSelectTest = async (testId) => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`http://localhost:5000/api/tests/${testId}/questions`);
+      setQuestions(response.data);
+      setSelectedTest(testId);
+      setLoading(false);
+      console.log("📩 Questions data:", response.data);
+    } catch (error) {
+      console.error("❌ Lỗi khi lấy câu hỏi:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleAnswerSelect = (questionId, selectedAnswer) => {
+    setAnswers({ ...answers, [questionId]: selectedAnswer });
+    console.log("📝 Chọn đáp án:", { questionId, selectedAnswer });
   };
 
   const handleSubmit = async () => {
-    const score = calculateScore(); // Hàm tính điểm
-    await axios.post("http://localhost:5000/api/auth/submit-test", {
-      userId,
-      score,
-    });
+    try {
+      await axios.post("http://localhost:5000/api/tests/submit", {
+        user_id: user.id,
+        test_id: selectedTest,
+        answers: Object.keys(answers).map((question_id) => ({
+          question_id,
+          answer: answers[question_id],
+        })),
+      });
 
-    alert("Bạn đã hoàn thành bài test!");
-    navigate("/dashboard"); // Điều hướng về trang chính
+      alert("✅ Bạn đã hoàn thành bài test!");
+      setUser({ ...user, isTestCompleted: true });
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("❌ Lỗi khi nộp bài test:", error);
+    }
   };
 
-  const calculateScore = () => {
-    let correctAnswers = 0;
-    questions.forEach((q) => {
-      if (answers[q._id] === q.correctAnswer) correctAnswers++;
-    });
-    return (correctAnswers / questions.length) * 100;
-  };
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+    );
+  }
 
-  if (loading) return <p>Loading...</p>;
+  const selectedTestData = tests.find(t => t._id === selectedTest);
 
   return (
-    <div>
-      <h2>Bài test đầu vào</h2>
-      {questions.map((q) => (
-        <div key={q._id}>
-          <p>{q.question}</p>
-          {q.options.map((opt) => (
-            <label key={opt}>
-              <input
-                type="radio"
-                name={q._id}
-                value={opt}
-                onChange={() => handleAnswerChange(q._id, opt)}
-              />
-              {opt}
-            </label>
-          ))}
+    <div className="entry-test-container">
+      <h1>📖 Bài Test Đầu Vào</h1>
+  
+      {!selectedTest ? (
+        <div className="test-selection">
+          <h2>Chọn bài test phù hợp với trình độ của bạn:</h2>
+          {tests.length === 0 ? (
+            <p>Không có bài test nào.</p>
+          ) : (
+            <div className="test-list">
+              {tests.map((test) => (
+                <TestCard 
+                  key={test._id} 
+                  test={test} 
+                  onSelect={handleSelectTest} 
+                />
+              ))}
+            </div>
+          )}
         </div>
-      ))}
-      <button onClick={handleSubmit}>Nộp bài</button>
+      ) : (
+        <div className="question-container">
+          <TestHeader 
+            test={selectedTestData}
+            questionsCount={questions.length}
+          />
+          
+          {questions.length === 0 ? (
+            <p>Không có câu hỏi nào.</p>
+          ) : (
+            <>
+              <QuestionList 
+                questions={questions}
+                onAnswerSelect={handleAnswerSelect}
+              />
+              <button className="submit-btn" onClick={handleSubmit}>
+                Nộp bài
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

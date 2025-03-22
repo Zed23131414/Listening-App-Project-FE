@@ -1,65 +1,69 @@
 .navbar {
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2c3e50;
-    padding: 1rem 2rem;
-    z-index: 1000; /* Đảm bảo Navbar luôn ở trên cùng */
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  padding: 1rem 2rem;
+  z-index: 1000; /* Đảm bảo Navbar luôn ở trên cùng */
 
-  }
-  
-  .navbar-logo a {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .navbar-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-  }
-  
-  .navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .navbar-search {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  
-  .navbar-login {
-    color: white;
-    border: 1px solid white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 30PX;
-  }
-  
-  .navbar-login:hover {
-    background-color: white;
-    color: #2c3e50;
-  }
-  .logo-image {
-    width: 400px;
-  }
+}
 
-  /* Thêm khoảng trống phía trên nội dung để tránh bị che bởi Navbar */
-  .content {
-    padding-top: 80px; /* Điều chỉnh giá trị này để phù hợp với chiều cao của Navbar */
-  }
+.navbar-logo a {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+span.navbar-username {
+  font-size: 1.25rem;
+  color: white;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-search {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.navbar-login {
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 30PX;
+}
+
+.navbar-login:hover {
+  background-color: white;
+  color: #2c3e50;
+}
+.logo-image {
+  width: 400px;
+}
+
+/* Thêm khoảng trống phía trên nội dung để tránh bị che bởi Navbar */
+.content {
+  padding-top: 80px; /* Điều chỉnh giá trị này để phù hợp với chiều cao của Navbar */
+}

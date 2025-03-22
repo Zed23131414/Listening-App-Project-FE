@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import './Register.css';
@@ -9,6 +9,13 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user"); // Lấy dữ liệu từ localStorage
+    if (storedUser) {
+      navigate("/dashboard"); // ✅ Chuyển hướng nếu user đã đăng nhập
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

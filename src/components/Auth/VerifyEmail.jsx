@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import './VerifyEmail.css';
@@ -11,6 +11,13 @@ const VerifyEmail = () => {
   const [isVerified, setIsVerified] = useState(false); // Trạng thái xác minh thành công
   const { verifyEmail } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+      const storedUser = localStorage.getItem("user"); // Lấy dữ liệu từ localStorage
+      if (storedUser) {
+        navigate("/dashboard"); // ✅ Chuyển hướng nếu user đã đăng nhập
+      }
+    }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

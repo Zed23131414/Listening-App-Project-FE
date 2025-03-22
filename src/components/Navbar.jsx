@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import logo from '../assets/logo-white.png'; // Import hình ảnh logo
-
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import "./Navbar.css";
+import logo from "../assets/logo-white.png";
+import React from "react";
 const Navbar = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // Lấy thông tin user từ localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+  const { user } = useContext(AuthContext); // ✅ Lấy user từ Context
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
+    localStorage.removeItem("user"); // Xóa thông tin khi logout
+    window.location.reload(); // Reload lại trang
   };
 
   return (

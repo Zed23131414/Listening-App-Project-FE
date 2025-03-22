@@ -6,8 +6,15 @@ const register = (formData) => {
     return axios.post(`${API_URL}/register`, formData);
 };
 
-const login = (formData) => {
-  return axios.post(`${API_URL}/login`, formData);
+export const login = async (formData) => {
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+    console.log("✅ API Login Response:", response.data); // Kiểm tra dữ liệu trả về
+    return response.data; // 🛠 Trả về dữ liệu trực tiếp
+  } catch (error) {
+    console.error("❌ Lỗi trong login:", error.message);
+    throw error;
+  }
 };
 
 const forgetPassword = (email) => {

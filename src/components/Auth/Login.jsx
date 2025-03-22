@@ -1,48 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
-import logoTitle from "../../assets/logo-black.png"; // Import hình ảnh logo
+import logoTitle from "../../assets/logo-black.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { login } = useAuth();
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  // ✅ Kiểm tra nếu user đã đăng nhập trước đó trong localStorage
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      navigate("/dashboard"); // Tự động chuyển hướng đến dashboard
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.email) newErrors.email = "Please enter your email address";
-    if (!formData.password) newErrors.password = "Please enter your password";
-    return newErrors;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
     try {
-      const response = await login(formData); // Giả sử login() trả về response từ backend
-      console.log("Login successful:", response);
-  
-      if (response.isTestCompleted === false) {
-        setErrors({ form: "Bạn cần hoàn thành bài test đầu vào trước khi tiếp tục." });
-        return;
+      const user = await login(formData); // Gọi API đăng nhập
+      console.log("🔍 Login response:", user);
+
+      if (!user || typeof user !== "object") {
+        throw new Error("Dữ liệu trả về từ API không hợp lệ");
       }
-  
-      navigate("/dashboard"); // Điều hướng nếu người dùng đã hoàn thành bài test
+
+      navigate("/dashboard"); // ✅ Chuyển hướng đến dashboard, nơi modal sẽ xuất hiện nếu cần
     } catch (error) {
-      console.error("Login error:", error);
-      setErrors({
-        form: "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.",
-      });
+      console.error("❌ Login error:", error.message);
+      setErrors({ form: "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin." });
     }
   };
 
